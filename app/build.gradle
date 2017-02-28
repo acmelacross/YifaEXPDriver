@@ -1,0 +1,81 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        release {
+            keyAlias 'acme'
+            keyPassword '1415926535'
+            storeFile file('/Users/coding/Desktop/key')
+            storePassword '1415926535'
+        }
+    }
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "com.wfzzkj.yifaexpdriver"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+        // instrumentTest.setRoot('tests')
+    }
+
+}
+
+repositories{
+    flatDir{
+        dirs 'libs' //就是你放aar的目录地址
+    }
+}
+
+
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile name: 'SMSSDK-2.1.3', ext: 'aar'
+    compile name: 'SMSSDKGUI-2.1.3', ext: 'aar'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.1.1'
+    compile 'com.android.support:design:25.1.1'
+    testCompile 'junit:junit:4.12'
+    //以下SDK开发者请根据需要自行选择
+    //  compile 'cn.bmob.android:bmob-sdk:3.4.7'
+    //    compile 'cn.bmob.android:http-legacy:1.0'
+
+    compile files('libs/Sunflower.jar')
+    compile 'com.android.support:support-v4:25.2.0'
+    compile 'cn.bmob.android:bmob-sdk:3.4.6'
+    compile 'com.squareup.okhttp:okhttp:2.4.0'
+    //CDN文件服务使用okhttp相关包进行文件的上传和下载（必填）
+    compile 'com.squareup.okio:okio:1.4.0'
+    compile 'cn.bmob.android:http-legacy:1.0'
+    compile files('libs/AMap3DMap_4.1.3_AMapNavi_1.9.4_AMapSearch_4.0.0_AMapLocation_3.3.0_20170118.jar')
+    compile files('libs/Msc.jar')
+}
+//repositories{}  支持java 依赖库管理（maven/ivy）,用于项目的依赖。这也是gradle 强力的地方。。。
+//dependencies{}  依赖包的定义。支持maven/ivy，远程，本地库，也支持单文件，如果前面定义了repositories{}maven 库，使用maven的依赖
+// （我没接触过ivy。。）的时候只需要按照用类似于com.android.tools.build:gradle:0.4，gradle 就会自动的往远程库下载相应的依赖。
+
+//dependencies {
+//    compile fileTree(dir: 'libs', include: ['*.jar'])
+//    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    })
+//    compile 'com.android.support:appcompat-v7:25.2.0'
+//    testCompile 'junit:junit:4.12'
+//}

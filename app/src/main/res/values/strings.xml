@@ -1,0 +1,48 @@
+<resources>
+
+
+    <string name="app_name">易发智运-司机端</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="title_activity_register2">Register2</string>
+    <string name="title_activity_index">IndexActivity</string>
+    <string name="title_activity_menu_main">MenuMainActivity</string>
+    <string name="xunfei_app_id">5566a266</string>
+    <string name="title_activity_change_driver">ChangeDriverActivity</string>
+
+    <string name="smssdk_bind_mobile_show">注册或绑定手机演示</string>
+    <string name="smssdk_contact">通讯录好友</string>
+    <string name="smssdk_appkey_dialog_title">请输入您的应用信息</string>
+    <string name="smssdk_appkey">AppKey</string>
+    <string name="smssdk_appkey_hint">请输入您的AppKey</string>
+    <string name="smssdk_appsecret">AppSecret</string>
+    <string name="smssdk_appsecrethint">请输入您的AppSecret</string>
+
+    <string name="notifyTitle">提示</string>
+    <string name="notifyMsg">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。</string>
+    <string name="setting">设置</string>
+    <string name="cancel">取消</string>
+
+
+    <string name="errorCodeInfo">
+	    0	定位成功。	可以在定位回调里判断定位返回成功后再进行业务逻辑运算\n
+	    1	一些重要参数为空，如context；	请对定位传递的参数进行非空判断\n
+	    2	定位失败，由于仅扫描到单个wifi，且没有基站信息。	请重新尝试\n
+	    3	获取到的请求参数为空，可能获取过程中出现异常。	请对所连接网络进行全面检查，请求可能被篡改\n
+	    4	请求服务器过程中的异常，多为网络情况差，链路不通导致	请检查设备网络是否通畅\n
+	    5	返回的XML格式错误，解析失败。	请稍后再试\n
+	    6	定位服务返回定位失败。	请将errorDetail（通过getLocationDetail()方法获取）信息通过工单系统反馈给我们\n
+	    7	KEY鉴权失败。	请仔细检查key绑定的sha1值与apk签名sha1值是否对应，或通过高频问题查找相关解决办法\n
+	    8	Android exception常规错误	请将errordetail（通过getLocationDetail()方法获取）信息通过工单系统反馈给我们\n
+	    9	定位初始化时出现异常。	请重新启动定位\n
+	    10	定位客户端启动失败。	请检查AndroidManifest.xml文件是否配置了APSService定位服务\n
+	    11	定位时的基站信息错误。	请检查是否安装SIM卡，设备很有可能连入了伪基站网络\n
+	    12	缺少定位权限。	请在设备的设置中开启app的定位权限\n
+	    13     定位失败，由于设备未开启WIFI模块或未插入SIM卡，且GPS当前不可用。 建议开启设备的WIFI模块，并将设备中插入一张可以正常工作的SIM卡，或者检查GPS是否开启；如果以上都内容都确认无误，请您检查App是否被授予定位权限\n
+	    14  GPS 定位失败，由于设备当前 GPS 状态差。 建议持设备到相对开阔的露天场所再次尝试\n
+	    15     定位结果被模拟导致定位失败。 如果您希望位置被模拟，请通过setMockEnable(true);方法开启允许位置模拟\n
+	    16     当前POI检索条件、行政区划检索条件下，无可用地理围栏。 建议调整检索条件后重新尝试，例如调整POI关键字，调整POI类型，调整周边搜区域，调整行政区关键字等\n
+	    17     相同的地理围栏已经存在，无需重复添加\n
+	</string>
+</resources>

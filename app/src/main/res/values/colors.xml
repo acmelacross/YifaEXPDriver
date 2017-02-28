@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+
+    <color name="gray_bg_main">#f5f5f5</color>
+    <color name="gray_fill">#96978f</color>
+    <color name="orange_main">#ff8903</color>
+
+    <item name="gray_holo_dark" type="color">#ff464646</item>
+    <item name="gray_holo_light" type="color">#ffd0d0d0</item>
+    <color name="white">#ffffffff</color>
+    <color name="light_gray">#ffe6e6e6</color>
+    <color name="black">#ff000000</color>
+    <!-- #ff23c5a8 -->
+    <color name="title_green">#33cc99</color>
+    <color name="bg_gray">#ffefebe7</color>
+    <!-- 快速注册金黄色 -->
+    <color name="goldyellow">#ff9428</color>
+
+
+
+
+
+
+
+    <color name="title_black">#383838</color>
+
+    <color name="gray_line">#d6d6d6</color>
+    <color name="gray_font">#787878</color>
+    <color name="gray_font2">#999999</color>
+    <!-- #ff23c5a8 -->
+    <color name="green">#00cc00</color>
+    <color name="green_line">#06c1ae</color>
+    <color name="green_line_press">#048779</color>
+
+    <color name="lightwhite">#fff</color>
+
+    <!-- listview 选中颜色 -->
+    <color name="red">#ff0000</color>
+    <color name="red_mogu">#ff5777</color>
+    <color name="list_yellow">#ffff99</color>
+    <color name="black_font">#3f3c33</color>
+
+    <color name="login_button">#ff775025</color>
+    <color name="toast_color">#ff2E76B9</color>
+    <color name="blue_shoping_item">#3c7dd0</color>
+    <color name="pink_shoping_item">#ec008c</color>
+    <color name="black_shoping_item_chima">#666666</color>
+
+    <color name="base_actionbar_bg">#f5f5f5</color>
+    <color name="base_action_bar_title_color">#2f2725</color>
+    <color name="base_tab_indicator_text_color">#f82c22</color>
+    <color name="base_menu_left_bg">#393c44</color>
+    <color name="pull_refresh_textview">#000000</color>
+    <color name="base_color_text_black">#3e3e39</color>
+    <color name="base_color_text_gray">#9fa0a0</color>
+    <color name="base_color_text_white">#ffffff</color>
+    <color name="home_item_color_bg">#f4f6f6</color>
+    <color name="base_bg">#f4f6f6</color>
+    <!-- zxing -->
+    <color name="color_half_transparent">#b0000000</color>
+    <color name="color_transparent_bg">#80000000</color>
+    <color name="color_transparent_bg1">#e0000000</color>
+    <!-- emot -->
+    <color name="msg_emote_divider">#ffa1a1a1</color>
+    <color name="color_bottom_bg">#272a2e</color>
+    <color name="color_bottom_text_normal">#9da0a4</color>
+    <color name="color_bottom_text_press">#4f9ef6</color>
+    <color name="text_gray">#969696</color>
+    <color name="transparent">#00000000</color>
+    <color name="msg_chat_bg">#eceff4</color>
+
+    <color name="theme_bg_color">#f0f2f5</color>
+    <color name="color_theme">#489cfa</color>
+    <color name="c_f98800">#ed4e23</color>
+
+    <color name="dialog_color_title">#f82c22</color>
+    <color name="guide_color">#898989</color>
+
+    <color name="common_bg">#fcfcfc</color>
+</resources>

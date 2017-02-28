@@ -1,0 +1,135 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bg_gray"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray" >
+
+        <include
+            android:id="@+id/menu"
+            layout="@layout/view_title" />
+
+        <ImageView
+            android:id="@+id/ivRegImage"
+            android:layout_width="270dp"
+            android:layout_height="180dp"
+            android:layout_below="@+id/menu"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/reg_ic_license" />
+
+        <EditText
+            android:id="@+id/etRegName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/ivRegImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/input_text_orange_border"
+            android:hint="姓名"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etRegCompany"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/etRegName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/input_text_orange_border"
+            android:hint="出租车公司"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etRegChePai"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/etRegCompany"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/input_text_orange_border"
+            android:hint="车牌号"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etRegCheInfo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/etRegChePai"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/input_text_orange_border"
+            android:hint="车辆基本信息"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etRegCheJiaHao"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/etRegCheInfo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/input_text_orange_border"
+            android:hint="车架号"
+            android:padding="8dp" />
+        
+         <TextView
+            android:id="@+id/tvRegProtocol"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+             android:layout_below="@id/etRegCheJiaHao"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="默认同意我方协议,点击查看"
+            android:textColor="@color/orange_main"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvRegConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+             android:layout_below="@id/tvRegProtocol"
+            android:layout_margin="20dp"
+            android:background="@color/orange_main"
+            android:gravity="center"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+        <!--
+     custom:progress_unreached_color="#CCCCCC"
+        custom:progress_reached_color="#3498DB"
+        custom:progress_unreached_bar_height="0.75dp"
+        custom:progress_reached_bar_height="1.5dp"
+        custom:progress_text_size="10sp"
+        custom:progress_text_color="#3498DB"
+        custom:progress_text_offset="1dp"
+        custom:progress_text_visibility="visible"
+        custom:max="100"
+        custom:progress="80"
+        -->
+
+        <com.wfzzkj.yifaexpdriver.view.NumberProgressBar
+            android:id="@+id/numberbar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/menu" />
+    </RelativeLayout>
+
+</ScrollView>
