@@ -36,8 +36,8 @@ public class MainActivity extends Activity {
 
 
 
-        initMob();
-        initBmob();
+//        initMob();
+//        initBmob();
       isLogin();
     }
 

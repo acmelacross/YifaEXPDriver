@@ -91,8 +91,9 @@ public class IndexActivity extends Activity implements LocationSource,
 		//语音播报开始
 				TTSController ttsManager = TTSController.getInstance(this);// 初始化语音模块
 				ttsManager.init();
+		System.out.println("ttsManager   ttsManager   " + ttsManager);
 		//ttsManager.startSpeaking("aaaaaaa");
-		AMapNavi.getInstance(this).addAMapNaviListener(ttsManager);
+		AMapNavi.getInstance(getApplicationContext()).addAMapNaviListener(ttsManager);
 				//AMapNavi.getInstance(this).setAMapNaviListener(ttsManager);// 设置语音模块播报
 
 		// TODO Auto-generated method stub

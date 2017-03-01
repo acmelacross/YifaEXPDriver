@@ -32,7 +32,17 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
+
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
+        android:name=".CrashApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -58,8 +68,12 @@
         <activity android:name=".menu.ZhouBianWuLiuActivity" />
         <activity android:name=".menu.MyOrderActivity" />
         <activity android:name=".menu.MapPositionKeRenActivity" />
-        <activity android:name=".menu.ChangeDriverActivity" />
+        <activity android:name=".menu.ChangerDriverActivity" />
 
+
+
+
+        <activity android:name="io.github.xudaojie.qrcodelib.CaptureActivity"/>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="xUNTGMCmqEGbh5bA7bXS8eNaESXOkWBX" />

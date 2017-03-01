@@ -22,10 +22,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
 public class MapPositionKeRenActivity extends Activity implements AMap.OnInfoWindowClickListener {
 	private AMap aMap;
 	private MapView mapView;
 	private EditText etPayRMB;
+	private  TextView mapChangerDriver;
 	private GoodsForYifa good = MyOrderActivity.goodTemp;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,14 @@ public class MapPositionKeRenActivity extends Activity implements AMap.OnInfoWin
 			  ((TextView)findViewById(R.id.tvIsPay)).setText("客户选择货到付款");
 		 
 		 ((TextView)findViewById(R.id.tvMapHuoWhereInfo)).setText(good.getInfo());
-		 
+		TextView mapChangerDriver= ((TextView)findViewById(R.id.mapChangerDriver));
+		mapChangerDriver.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				startActivity(new Intent().setClass(MapPositionKeRenActivity.this,ChangerDriverActivity.class));
+			}
+		});
+
 		}
 	private void initMap() {
 		if (aMap == null) {
@@ -93,6 +102,12 @@ public class MapPositionKeRenActivity extends Activity implements AMap.OnInfoWin
         //aMap.setOnCameraChangeListener(this);// 对amap添加移动地图事件监听器
     	printPointWithMap();
     }
+
+
+
+
+
+
     private void printPointWithMap(){
     	//MyMapUtil.drawMarkerAndWinWithLon(aMap, 30.679879, 104.064855, "主人,我到这里啦", "外星地点", false).showInfoWindow();
     	aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f)

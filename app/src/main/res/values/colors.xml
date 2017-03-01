@@ -82,4 +82,7 @@
     <color name="guide_color">#898989</color>
 
     <color name="common_bg">#fcfcfc</color>
+
+    <color name="black_changer_driver_bg">#282828</color>
+    <color name="red_changer_driver_view">#fa5f5d</color>
 </resources>
