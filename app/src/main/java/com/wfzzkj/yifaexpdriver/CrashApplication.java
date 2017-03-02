@@ -4,6 +4,8 @@ import android.app.Application;
 
 //import org.xutils.x;
 
+import com.tendcloud.tenddata.TCAgent;
+
 import cn.bmob.v3.Bmob;
 import cn.smssdk.SMSSDK;
 
@@ -24,6 +26,16 @@ public class CrashApplication extends Application {
 
 		SMSSDK.initSDK(this, "1b6ff869a9c09", "fbf6bcdfe2edb9b9f404af9dd62c4e2");
 		initBmob();
+		initTalkingdata();
+	}
+
+	private void initTalkingdata() {
+		TCAgent.LOG_ON=true;
+		// App ID: 在TalkingData创建应用后，进入数据报表页中，在“系统设置”-“编辑应用”页面里查看App ID。
+		// 渠道 ID: 是渠道标识符，可通过不同渠道单独追踪数据。
+		TCAgent.init(this);
+		// 如果已经在AndroidManifest.xml配置了App ID和渠道ID，调用TCAgent.init(this)即可；或与AndroidManifest.xml中的对应参数保持一致。
+		TCAgent.setReportUncaughtExceptions(true);
 	}
 
 //	private void initZx() {

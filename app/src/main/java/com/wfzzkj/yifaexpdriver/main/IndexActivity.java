@@ -418,7 +418,7 @@ private void initDaoHang(){
 	public void onLocationChanged(AMapLocation aLocation) {
 		if (mListener != null && aLocation != null) {
 			mListener.onLocationChanged(aLocation);// 显示系统小蓝点
-			// System.out.println(aLocation+"onLocationChangedAMapLocation" +aLocation.getAddress());
+			 System.out.println(aLocation+"onLocationChangedAMapLocation" +aLocation.getAddress());
 			// 执行一次 定位打印小蓝点
 			if (locationFirst) {
 				locationFirst = false;

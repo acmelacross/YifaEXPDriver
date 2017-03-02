@@ -56,7 +56,6 @@ dependencies {
     //以下SDK开发者请根据需要自行选择
     //  compile 'cn.bmob.android:bmob-sdk:3.4.7'
     //    compile 'cn.bmob.android:http-legacy:1.0'
-
     compile files('libs/Sunflower.jar')
     compile 'com.android.support:support-v4:25.2.0'
     compile 'cn.bmob.android:bmob-sdk:3.4.6'
@@ -66,10 +65,10 @@ dependencies {
     compile 'cn.bmob.android:http-legacy:1.0'
     compile files('libs/AMap3DMap_4.1.3_AMapNavi_1.9.4_AMapSearch_4.0.0_AMapLocation_3.3.0_20170118.jar')
     compile files('libs/Msc.jar')
-
-  //  compile 'org.xutils:xutils:3.3.42'
+    //  compile 'org.xutils:xutils:3.3.42'
     compile 'com.github.XuDaojie:QRCode-Android:v0.4.2'
     compile 'com.github.yoojia:next-qrcode:2.0-2'
+    compile files('libs/TalkingData_AppAnalytics_Android_SDK_V2.3.50.jar')
 }
 //repositories{}  支持java 依赖库管理（maven/ivy）,用于项目的依赖。这也是gradle 强力的地方。。。
 //dependencies{}  依赖包的定义。支持maven/ivy，远程，本地库，也支持单文件，如果前面定义了repositories{}maven 库，使用maven的依赖

@@ -14,6 +14,8 @@ import java.util.Date;
 import android.os.Environment;
 import android.util.Log;
 
+import com.tendcloud.tenddata.TCAgent;
+
 public class FailedlWrite {
 
 	private static String errorPathName="yifadriver";
@@ -42,6 +44,7 @@ public class FailedlWrite {
 	 */
 	private static String writeLog(String log, String name) 
 	{
+		//TCAgent.onError(, Throwable throwable)
 		CharSequence timestamp = new Date().toString().replace(" ", "");
 		 DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		String time = formatter.format(new Date());

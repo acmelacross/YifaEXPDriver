@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 
+import com.tendcloud.tenddata.TCAgent;
 import com.wfzzkj.yifaexpdriver.main.IndexActivity;
 import com.wfzzkj.yifaexpdriver.modle.DriverForYifa;
 import com.wfzzkj.yifaexpdriver.modle.UserForYifa;
@@ -40,6 +41,7 @@ public class MainActivity extends Activity {
 
 //        initMob();
 //        initBmob();
+       // TCAgent.onPageStart(Context ctx, String pageName);
     h.sendEmptyMessageDelayed(0,2500);
     }
 
