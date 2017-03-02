@@ -91,7 +91,7 @@ public class IndexActivity extends Activity implements LocationSource,
 		//语音播报开始
 				TTSController ttsManager = TTSController.getInstance(this);// 初始化语音模块
 				ttsManager.init();
-		System.out.println("ttsManager   ttsManager   " + ttsManager);
+		//System.out.println("ttsManager   ttsManager   " + ttsManager);
 		//ttsManager.startSpeaking("aaaaaaa");
 		AMapNavi.getInstance(getApplicationContext()).addAMapNaviListener(ttsManager);
 				//AMapNavi.getInstance(this).setAMapNaviListener(ttsManager);// 设置语音模块播报
@@ -350,10 +350,12 @@ private void initDaoHang(){
 		myLocationStyle.strokeWidth(1.0f);// 设置圆形的边框粗细
 
 
+
 		// 设置定位监听
 		aMap.setLocationSource(this);
 // 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
 		aMap.setMyLocationEnabled(true);
+		aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
 // 设置定位的类型为定位模式，有定位、跟随或地图根据面向方向旋转几种
 		aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
 //		aMap.setMyLocationStyle(myLocationStyle);
@@ -416,7 +418,7 @@ private void initDaoHang(){
 	public void onLocationChanged(AMapLocation aLocation) {
 		if (mListener != null && aLocation != null) {
 			mListener.onLocationChanged(aLocation);// 显示系统小蓝点
-			// System.out.println("onLocationChangedAMapLocation");
+			// System.out.println(aLocation+"onLocationChangedAMapLocation" +aLocation.getAddress());
 			// 执行一次 定位打印小蓝点
 			if (locationFirst) {
 				locationFirst = false;
@@ -464,6 +466,7 @@ private void initDaoHang(){
 							public void onFailure(int code, String msg) {
 								// TODO Auto-generated method stub
 								//toast("更新用户信息失败:" + msg);
+								System.out.println("上传地理位置失败"+code+msg);
 								FailedlWrite.writeCrashInfoToFile("上传地理位置失败"+code+msg);
 							}
 						});
@@ -498,12 +501,15 @@ private void initDaoHang(){
 			mlocationClient = new AMapLocationClient(this);
 			//初始化定位参数
 			mLocationOption = new AMapLocationClientOption();
+			mLocationOption.setInterval(1000*60*5);
 			//设置定位回调监听
 			mlocationClient.setLocationListener(this);
 			//设置为高精度定位模式
 			mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+			mLocationOption.setNeedAddress(true);
 			//设置定位参数
 			mlocationClient.setLocationOption(mLocationOption);
+
 			// 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
 			// 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用stopLocation()方法来取消定位请求
 			// 在定位结束后，在合适的生命周期调用onDestroy()方法

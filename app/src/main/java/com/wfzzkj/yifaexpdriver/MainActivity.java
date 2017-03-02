@@ -3,6 +3,8 @@ package com.wfzzkj.yifaexpdriver;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -14,6 +16,7 @@ import com.wfzzkj.yifaexpdriver.utils.ToastUtils;
 
 import java.util.HashMap;
 import java.util.Random;
+import java.util.logging.LogRecord;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
@@ -35,12 +38,21 @@ public class MainActivity extends Activity {
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，创建地图
 
 
-
 //        initMob();
 //        initBmob();
-      isLogin();
+    h.sendEmptyMessageDelayed(0,2500);
     }
 
+Handler h = new Handler(){
+    @Override
+    public void handleMessage(Message msg) {
+        super.handleMessage(msg);
+        switch (msg.what){
+            case  0:   isLogin();
+                break;
+        }
+    }
+};
 
 
 

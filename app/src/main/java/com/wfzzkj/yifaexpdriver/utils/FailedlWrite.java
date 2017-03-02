@@ -45,7 +45,7 @@ public class FailedlWrite {
 		CharSequence timestamp = new Date().toString().replace(" ", "");
 		 DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		String time = formatter.format(new Date());
-		timestamp  = "客户端"+time+"failed";
+		timestamp  = "driver"+time+"failed";
 		String filename = name + timestamp + ".txt";
 	
 		File file = new File(filename);

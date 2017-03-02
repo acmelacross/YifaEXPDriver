@@ -74,6 +74,7 @@
 
 
         <activity android:name="io.github.xudaojie.qrcodelib.CaptureActivity"/>
+        　<service android:name="com.amap.api.location.APSService"></service>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="xUNTGMCmqEGbh5bA7bXS8eNaESXOkWBX" />
