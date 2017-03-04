@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.tendcloud.tenddata.TCAgent;
 import com.wfzzkj.yifaexpdriver.main.IndexActivity;
+import com.wfzzkj.yifaexpdriver.main.Register2;
 import com.wfzzkj.yifaexpdriver.modle.DriverForYifa;
 import com.wfzzkj.yifaexpdriver.modle.UserForYifa;
 import com.wfzzkj.yifaexpdriver.utils.ToastUtils;
@@ -165,6 +166,7 @@ Handler h = new Handler(){
         DriverForYifa bu2 = new DriverForYifa();
         bu2.setUsername(phone);
         bu2.setPassword("123456");
+        Config.getInstance().phone=phone;
 //        bu2.login(new SaveListener<BmobUser>() {
 //
 //            @Override
@@ -201,15 +203,15 @@ Handler h = new Handler(){
             @Override
             public void onFailure(int code, String msg) {
                 // TODO Auto-generated method stub
-                System.out.println();
+                System.out.println(msg+"code  " + code);
 
                 if (code == 101) {
-                   // startActivity(new Intent().setClass(getApplicationContext(), Register2.class));
+                   startActivity(new Intent().setClass(getApplicationContext(), Register2.class));
                     finish();
                     return;
-                }
-//                ToastUtil.show(getApplicationContext(), "登录失败:原因 "
-//                        + msg + code);
+                }else
+                ToastUtils.showShort(getApplicationContext(), "登录失败:原因 "
+                        + msg + code);
             }
         });
 

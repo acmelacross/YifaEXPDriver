@@ -63,6 +63,8 @@
         <activity android:name=".main.IndexActivity" />
         <activity android:name=".main.SimpleGPSNaviActivity" />
         <activity android:name=".main.SimpleNaviActivity" />
+        <activity android:name=".main.ProtocolInfoActivity" />
+        <activity android:name=".main.Register2" />
         <activity android:name=".menu.MenuMainActivity" />
         <activity android:name=".menu.MyFeedBackActivity" />
         <activity android:name=".menu.ZhouBianWuLiuActivity" />
