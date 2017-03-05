@@ -172,7 +172,7 @@ public class GoodsForYifa extends BmobObject{
 			//str+=(",所需车型"+sExpCheType);
 			str+=(","+sExpHuoInfoType);//重货 泡货
 		}
-		str+=",请师傅火速赶往,易发将在稍后为您开启导航";
+		str+=",请火速赶往,易发快运 将在稍后为您开启导航";
 		return str;
 	}
 	public String getInfo(){

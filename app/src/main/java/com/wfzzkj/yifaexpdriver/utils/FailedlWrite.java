@@ -2,8 +2,12 @@ package com.wfzzkj.yifaexpdriver.utils;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -27,12 +31,10 @@ public class FailedlWrite {
 	public static void writeCrashInfoToFile(String failedStr) {
 		//String result = failedStr.toString();
 		//这里把刚才异常堆栈信息写入SD卡的Log日志里面
-		if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) 
-		{
+
 			String sdcardPath = Environment.getExternalStorageDirectory().getPath();
-			String filePath = sdcardPath + errorPathName+"/failed/";
+			String filePath = sdcardPath  +"/"+errorPathName+"/failed/";
 			 writeLog(failedStr, filePath);
-		}
 	}
 
 	/**
@@ -45,32 +47,31 @@ public class FailedlWrite {
 	private static String writeLog(String log, String name) 
 	{
 		//TCAgent.onError(, Throwable throwable)
-		CharSequence timestamp = new Date().toString().replace(" ", "");
+
 		 DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		String time = formatter.format(new Date());
-		timestamp  = "driver"+time+"failed";
-		String filename = name + timestamp + ".txt";
-	
-		File file = new File(filename);
-		if(!file.getParentFile().exists()){
-			file.getParentFile().mkdirs();
+
+		File filePath = new File(name+time);
+		File fileName = new File(name+"/"+time+"/"+time+".txt");
+//		System.out.println("filename  + "   + name);
+		if(!filePath.exists()){
+			filePath.mkdirs();
+			System.out.println("filePath.mkdirs()  "+filePath.mkdirs());
 		}
 		try 
 		{
-			Log.d("TAG", "写入到SD卡里面");
-			//			FileOutputStream stream = new FileOutputStream(new File(filename));
-			//			OutputStreamWriter output = new OutputStreamWriter(stream);
-			file.createNewFile();
-			FileWriter fw=new FileWriter(file,true);   
-			BufferedWriter bw = new BufferedWriter(fw);
-			//写入相关Log到文件
-			//errorLog = log;
-			bw.write(log);
-			bw.newLine();
-			bw.close();
-			fw.close();
+			Log.d("TAG", "写入到SD卡里面" + log);
+
+
+			OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(fileName),"UTF-8");
+			out.write(log);
+
+
+			out.flush();
+			out.close();
+
 			
-			return filename;
+			return name+time;
 		} 
 		catch (IOException e) 
 		{

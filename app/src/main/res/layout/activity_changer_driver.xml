@@ -34,6 +34,7 @@
             android:textSize="10pt"
             android:textColor="@color/white"
             android:gravity="center"
+            android:visibility="gone"
 
             />
         <TextView

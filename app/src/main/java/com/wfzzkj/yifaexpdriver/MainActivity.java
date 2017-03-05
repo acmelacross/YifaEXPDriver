@@ -11,9 +11,11 @@ import android.widget.Toast;
 
 import com.tendcloud.tenddata.TCAgent;
 import com.wfzzkj.yifaexpdriver.main.IndexActivity;
+import com.wfzzkj.yifaexpdriver.main.ProtocolInfoActivity;
 import com.wfzzkj.yifaexpdriver.main.Register2;
 import com.wfzzkj.yifaexpdriver.modle.DriverForYifa;
 import com.wfzzkj.yifaexpdriver.modle.UserForYifa;
+import com.wfzzkj.yifaexpdriver.utils.FailedlWrite;
 import com.wfzzkj.yifaexpdriver.utils.ToastUtils;
 
 import java.util.HashMap;
@@ -44,6 +46,8 @@ public class MainActivity extends Activity {
 //        initBmob();
        // TCAgent.onPageStart(Context ctx, String pageName);
     h.sendEmptyMessageDelayed(0,2500);
+
+    //    FailedlWrite.writeCrashInfoToFile("啊啊啊少时诵诗书少时诵诗书少时诵诗书少时诵诗书烧烧烧烧烧烧  啊啊啊");
     }
 
 Handler h = new Handler(){
@@ -51,7 +55,9 @@ Handler h = new Handler(){
     public void handleMessage(Message msg) {
         super.handleMessage(msg);
         switch (msg.what){
-            case  0:   isLogin();
+            case  0:
+                isLogin();
+                //startActivity(new Intent().setClass(getApplicationContext(), ProtocolInfoActivity.class));
                 break;
         }
     }

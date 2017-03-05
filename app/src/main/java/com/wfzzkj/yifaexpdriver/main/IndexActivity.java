@@ -42,6 +42,7 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.navi.AMapNavi;
+import com.wfzzkj.yifaexpdriver.CheckPermissionsActivity;
 import com.wfzzkj.yifaexpdriver.Config;
 import com.wfzzkj.yifaexpdriver.R;
 import com.wfzzkj.yifaexpdriver.menu.MenuMainActivity;
@@ -52,7 +53,7 @@ import com.wfzzkj.yifaexpdriver.utils.ToastUtils;
 import com.wfzzkj.yifaexpdriver.utils.xunfei.TTSController;
 
 
-public class IndexActivity extends Activity implements LocationSource,
+public class IndexActivity extends CheckPermissionsActivity implements LocationSource,
 		AMapLocationListener {
 	ImageView ivIndexButton;// 界面旋转主按钮(接单不接单)
 	private AMap aMap;
@@ -420,8 +421,8 @@ private void initDaoHang(){
 			mListener.onLocationChanged(aLocation);// 显示系统小蓝点
 			 System.out.println(aLocation+"onLocationChangedAMapLocation" +aLocation.getAddress());
 			// 执行一次 定位打印小蓝点
-			if (locationFirst) {
-				locationFirst = false;
+			aMap.clear();
+
 				Marker marker = aMap.addMarker(new MarkerOptions()
 						.anchor(0.5f, 0.5f)
 						.position(
@@ -433,13 +434,13 @@ private void initDaoHang(){
 										+ aLocation.getPoiName())
 						.draggable(true));
 				marker.showInfoWindow();
+
 				myLa = new LatLng(aLocation.getLatitude(),
 						aLocation.getLongitude());
 				//System.out.println("-----"+UserForYifa.getCurrentUser(getApplicationContext(),UserForYifa.class) !=null);
 				if (UserForYifa.getCurrentUser(getApplicationContext(),UserForYifa.class) !=null) {
 					timer10putLocation(aLocation);
 				}
-			}
 
 		}
 	}

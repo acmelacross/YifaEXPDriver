@@ -47,7 +47,7 @@ public class MyJourneyAdapter extends BaseAdapter {
 	          //System.out.println("---"+position);
 	      	TextView content = mViewHolder
 	    			.getView(R.id.tvMyJourneyTime);
-	    	          content.setText(list.get(position).getsExpUserTime());
+	    	          content.setText(list.get(position).getCreatedAt());
 	    	      	TextView tvMyJourneyState = mViewHolder
 	    	    			.getView(R.id.tvMyJourneyState);
 	    	      	System.out.println("list.get(position).getiGoodState()"+list.get(position).getObjectId());

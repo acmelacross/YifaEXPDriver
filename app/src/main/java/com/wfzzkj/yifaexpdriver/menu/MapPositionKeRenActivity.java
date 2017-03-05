@@ -14,6 +14,8 @@ import com.wfzzkj.yifaexpdriver.R;
 import com.wfzzkj.yifaexpdriver.modle.Constact;
 import com.wfzzkj.yifaexpdriver.modle.GoodsForYifa;
 import com.wfzzkj.yifaexpdriver.utils.MyMapUtil;
+import com.wfzzkj.yifaexpdriver.utils.ToastUtils;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
@@ -64,7 +66,11 @@ public class MapPositionKeRenActivity extends Activity implements AMap.OnInfoWin
 		mapChangerDriver.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				startActivity(new Intent().setClass(MapPositionKeRenActivity.this,ChangerDriverActivity.class));
+				if (MyOrderActivity.goodTemp.getiGoodState()!= Constact.EXP_GoodStateCancel)
+					startActivity(new Intent().setClass(MapPositionKeRenActivity.this,ChangerDriverActivity.class));
+				else{
+					ToastUtils.showLong(MapPositionKeRenActivity.this,"此订单已取消");
+				}
 			}
 		});
 

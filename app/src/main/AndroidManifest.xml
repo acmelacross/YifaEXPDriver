@@ -93,8 +93,8 @@
             android:value="Android_Demo" />
 
 
-        <meta-data android:name="TD_APP_ID" android:value="IDF226460213A94A5EA094A68C826DC4D8" />
-        <meta-data android:name="TD_CHANNEL_ID" android:value="first_360" />
+        <meta-data android:name="TD_APP_ID" android:value="F226460213A94A5EA094A68C826DC4D8" />
+        <meta-data android:name="TD_CHANNEL_ID" android:value="first_sanliuling" />
 
     </application>
 
