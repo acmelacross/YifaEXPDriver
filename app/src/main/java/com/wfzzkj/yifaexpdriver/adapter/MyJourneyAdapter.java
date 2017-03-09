@@ -50,7 +50,7 @@ public class MyJourneyAdapter extends BaseAdapter {
 	    	          content.setText(list.get(position).getCreatedAt());
 	    	      	TextView tvMyJourneyState = mViewHolder
 	    	    			.getView(R.id.tvMyJourneyState);
-	    	      	System.out.println("list.get(position).getiGoodState()"+list.get(position).getObjectId());
+	    	      	//System.out.println("list.get(position).getiGoodState()"+list.get(position).getObjectId());
 	    	      	switch (list.get(position).getiGoodState()) {//货物当前状态 0废弃 1接单中 2配送中 3已抵达  
 	    			case 0:
 	    				tvMyJourneyState.setText("已取消");

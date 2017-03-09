@@ -62,6 +62,7 @@ public class IndexActivity extends CheckPermissionsActivity implements LocationS
 	LatLng myLa = null;// 记录我目前的定位
 	private boolean locationFirst = true;// 定位打印小蓝点只执行一次
 	private boolean isBusy = false;// 司机接单标志
+	private boolean isUpdateProgress = false;// 是否正在更新过程中
 	private boolean isVisibleTraffic = false;// 司机接单标志
 	private SoundPool soundPool;
 	private GoodsForYifa good = new GoodsForYifa();
@@ -114,15 +115,20 @@ public class IndexActivity extends CheckPermissionsActivity implements LocationS
 		ivIndexButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-
-
+if(isUpdateProgress){
+	ToastUtils.showShort(IndexActivity.this,"正在连接...请稍后");
+	return;
+}
+				isUpdateProgress = true;
 				isBusy = !isBusy;
+				System.out.println(user.getObjectId()+"isBusy  " + isBusy);
 				UserForYifa userTemp = new UserForYifa();
 				userTemp.setBusy(isBusy);
-				//System.out.println("userTemp" +userTemp);
+				System.out.println(userTemp.isBusy()+"   busy   userTemp" +userTemp);
 				userTemp.update(IndexActivity.this, user.getObjectId(), new UpdateListener() {
 					@Override
 					public void onSuccess() {
+						isUpdateProgress = false;
 						// TODO Auto-generated method stub
 						if (isBusy) {
 							ivIndexButton.clearAnimation();
@@ -144,6 +150,7 @@ public class IndexActivity extends CheckPermissionsActivity implements LocationS
 					}
 					@Override
 					public void onFailure(int code, String msg) {
+						isUpdateProgress = false;
 						// TODO Auto-generated method stub
 						//toast("更新失败："+msg);
 						System.out.println("失败 更新忙闲" + code + msg);
@@ -308,8 +315,8 @@ public void onConnectCompleted() {
 				}
 				TTSController.getInstance(IndexActivity.this).startSpeaking(good.getString());
 
-			handler.sendEmptyMessageDelayed(GODAOHANG, (good.getString().length()/3+1)*1000);
-
+			//handler.sendEmptyMessageDelayed(GODAOHANG, (good.getString().length()/3+1)*1000);
+				handler.sendEmptyMessageDelayed(GODAOHANG, 2*1000);
 				break;
 			case GODAOHANG:initDaoHang();//导航
 				break;
@@ -325,7 +332,8 @@ public void onConnectCompleted() {
  * @return
  */
 private void initDaoHang(){
-	startActivity(new Intent().setClass(getApplicationContext(), SimpleGPSNaviActivity.class));
+	//intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+	startActivity(new Intent().addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)   .setClass(getApplicationContext(), SimpleGPSNaviActivity.class));
 }
 	/**
 	 * 初始化AMap对象
@@ -444,53 +452,58 @@ private void initDaoHang(){
 
 		}
 	}
-	//定时器
-	  public  void timer10putLocation(final AMapLocation aLocation) {  //设定指定任务task在指定延迟delay后进行固定频率peroid的执行。
-	        Timer timer = new Timer();
-	        timer.scheduleAtFixedRate(new TimerTask() {
-	            public void run() {
-	            	UserForYifa user =  UserForYifa.getCurrentUser(getApplicationContext(),UserForYifa.class);
-	        		if(user != null){
-	        		    // 允许用户使用应用
-	        			//发送服务器定位信息
 
-	        			UserForYifa newUser = new UserForYifa();
-	        			newUser.setGpsAddStr(aLocation.getStreet()+aLocation.getPoiName());
-	        			newUser.setGpsAdd(new BmobGeoPoint(aLocation.getLongitude(),aLocation.getLatitude()));
-						newUser.update(getApplicationContext(),user.getObjectId(),new UpdateListener() {
-							@Override
-							public void onSuccess() {
-								// TODO Auto-generated method stub
-								System.out.println("上传地理位置成功");
-							}
-							@Override
-							public void onFailure(int code, String msg) {
-								// TODO Auto-generated method stub
-								//toast("更新用户信息失败:" + msg);
-								System.out.println("上传地理位置失败"+code+msg);
-								FailedlWrite.writeCrashInfoToFile("上传地理位置失败"+code+msg);
-							}
-						});
 
-//						newUser.update(user.getObjectId(),new UpdateListener() {
-//							@Override
-//							public void done(BmobException e) {
-//								if(e==null){
+
+	public void timer10putLocation(final AMapLocation aLocation) { // 设定指定任务task在指定延迟delay后进行固定频率peroid的执行。
+	System.out.println("触发上传地理位置 ");
+		if(aLocation == null)
+		{
+			return;
+		}
+		user = UserForYifa.getCurrentUser(
+				getApplicationContext(), UserForYifa.class);
+		if (user != null) {
+			// 允许用户使用应用
+			// 发送服务器定位信息
+
+			UserForYifa newUser = new UserForYifa();
+			newUser.setBusy(isBusy);
+			newUser.setGpsAdd(new BmobGeoPoint(
+					aLocation.getLongitude(), aLocation.getLatitude()));
+			newUser.update(getApplicationContext(), user.getObjectId(),
+					new UpdateListener() {
+						@Override
+						public void onSuccess() {
+							// TODO Auto-generated method stub
+							System.out.println("上传地理位置成功");
+						}
+
+						@Override
+						public void onFailure(int code, String msg) {
+							// TODO Auto-generated method stub
+							// toast("更新用户信息失败:" + msg);
+							System.out.println("上传地理位置失败"
+									+ code + msg);
+							FailedlWrite
+									.writeCrashInfoToFile("上传地理位置失败"
+											+ code + msg);
+						}
+					});
+		} else {
+			// 缓存用户对象为空时， 可打开用户注册界面…
+			System.out.println("null   ");
+		}
+
+
+//		Timer timer = new Timer();
+//		timer.scheduleAtFixedRate(new TimerTask() {
+//			public void run() {
 //
-//								}else{
-//									FailedlWrite.writeCrashInfoToFile("上传地理位置失败"+e.getMessage());
-//								}
-//							}
-//						});
-
-	        		}else{
-	        		    //缓存用户对象为空时， 可打开用户注册界面…
-	        			System.out.println("null   ");
-	        		}
-
-	            }
-	        }, 3, 1000*60*10);
-	    }
+//
+//			}
+//		}, 1, 1000*10);
+	}
 	/**
 	 * 激活定位
 	 */

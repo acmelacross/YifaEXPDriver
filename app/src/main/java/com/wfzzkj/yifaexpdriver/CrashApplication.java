@@ -27,6 +27,7 @@ public class CrashApplication extends Application {
 		SMSSDK.initSDK(this, "1b6ff869a9c09", "fbf6bcdfe2edb9b9f404af9dd62c4e2");
 		initBmob();
 		initTalkingdata();
+		initMyApp();
 	}
 
 	private void initTalkingdata() {
@@ -41,7 +42,12 @@ public class CrashApplication extends Application {
 //	private void initZx() {
 //		ZXingLibrary.initDisplayOpinion(this);
 //	}
+private void initMyApp(){
+	Config.getInstance().appContext = this;
+	CrashHandler crashHandler = CrashHandler.getInstance();
+	crashHandler.init(this);
 
+}
 	private  void initBmob(){
 		//第一：默认初始化
 		Bmob.initialize(this, "0230f4953d4ec60eb7f701dda12e0359");

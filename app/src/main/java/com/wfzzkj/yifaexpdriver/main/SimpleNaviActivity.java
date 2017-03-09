@@ -6,9 +6,21 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 
 import com.amap.api.navi.AMapNavi;
+import com.amap.api.navi.AMapNaviListener;
 import com.amap.api.navi.AMapNaviView;
 import com.amap.api.navi.AMapNaviViewListener;
+import com.amap.api.navi.enums.NaviType;
+import com.amap.api.navi.model.AMapLaneInfo;
+import com.amap.api.navi.model.AMapNaviCross;
+import com.amap.api.navi.model.AMapNaviInfo;
+import com.amap.api.navi.model.AMapNaviLocation;
+import com.amap.api.navi.model.AMapNaviStaticInfo;
+import com.amap.api.navi.model.AMapNaviTrafficFacilityInfo;
+import com.amap.api.navi.model.AimLessModeCongestionInfo;
+import com.amap.api.navi.model.AimLessModeStat;
 import com.amap.api.navi.model.NaviInfo;
+import com.autonavi.tbt.NaviStaticInfo;
+import com.autonavi.tbt.TrafficFacilityInfo;
 import com.wfzzkj.yifaexpdriver.R;
 import com.wfzzkj.yifaexpdriver.utils.Utils;
 import com.wfzzkj.yifaexpdriver.utils.xunfei.TTSController;
@@ -19,7 +31,7 @@ import com.wfzzkj.yifaexpdriver.utils.xunfei.TTSController;
  * 
  * */
 public class SimpleNaviActivity extends Activity implements
-		AMapNaviViewListener {
+		AMapNaviListener,AMapNaviViewListener {
 	//导航View
 	private AMapNaviView mAmapAMapNaviView;
    //是否为模拟导航
@@ -39,7 +51,7 @@ public class SimpleNaviActivity extends Activity implements
 	private void processBundle(Bundle bundle) {
 		if (bundle != null) {
 			//mIsEmulatorNavi = bundle.getBoolean(Utils.ISEMULATOR, true);
-			mIsEmulatorNavi =false;
+			//mIsEmulatorNavi =false;
 			mCode=bundle.getInt(Utils.ACTIVITYINDEX);
 		}
 	}
@@ -52,17 +64,19 @@ public class SimpleNaviActivity extends Activity implements
 	private void init(Bundle savedInstanceState) {
 		mAmapAMapNaviView = (AMapNaviView) findViewById(R.id.simplenavimap);
 		mAmapAMapNaviView.onCreate(savedInstanceState);
+		AMapNavi.getInstance(this).addAMapNaviListener(this);
 		mAmapAMapNaviView.setAMapNaviViewListener(this);
-
+		AMapNavi.getInstance(this).startGPS();
+System.out.println(" mIsEmulatorNavi    "+ mIsEmulatorNavi);
 		if (mIsEmulatorNavi) {//////////mIsEmulatorNavi
 			// 设置模拟速度
-			AMapNavi.getInstance(this).setEmulatorNaviSpeed(100);
+			AMapNavi.getInstance(this).setEmulatorNaviSpeed(190);
 			// 开启模拟导航
-			AMapNavi.getInstance(this).startNavi(AMapNavi.EmulatorNaviMode);
+			AMapNavi.getInstance(this).startNavi(NaviType.EMULATOR);
 
 		} else {
 			// 开启实时导航
-			AMapNavi.getInstance(this).startNavi(AMapNavi.GPSNaviMode);
+			AMapNavi.getInstance(this).startNavi(NaviType.GPS);
 			System.out.println("-----"+new NaviInfo().getCurStepRetainDistance());
 		}
 	}
@@ -182,5 +196,150 @@ public class SimpleNaviActivity extends Activity implements
 	@Override
 	public boolean onNaviBackClick() {
 		return false;
+	}
+
+	@Override
+	public void onInitNaviFailure() {
+		System.out.println("onInitNaviFailure");
+	}
+
+	@Override
+	public void onInitNaviSuccess() {
+		System.out.println("onInitNaviSuccess");
+	}
+
+	@Override
+	public void onStartNavi(int i) {
+		System.out.println("onStartNavi"+i);
+	}
+
+	@Override
+	public void onTrafficStatusUpdate() {
+
+	}
+
+	@Override
+	public void onLocationChange(AMapNaviLocation aMapNaviLocation) {
+
+	}
+
+	@Override
+	public void onGetNavigationText(int i, String s) {
+
+	}
+
+	@Override
+	public void onEndEmulatorNavi() {
+
+	}
+
+	@Override
+	public void onArriveDestination() {
+
+	}
+
+	@Override
+	public void onArriveDestination(NaviStaticInfo naviStaticInfo) {
+		System.out.println("onArriveDestination"+naviStaticInfo);
+	}
+
+	@Override
+	public void onArriveDestination(AMapNaviStaticInfo aMapNaviStaticInfo) {
+		System.out.println("onArriveDestination"+aMapNaviStaticInfo);
+	}
+
+	@Override
+	public void onCalculateRouteSuccess() {
+		System.out.println("onCalculateRouteSuccess");
+	}
+
+	@Override
+	public void onCalculateRouteFailure(int i) {
+
+	}
+
+	@Override
+	public void onReCalculateRouteForYaw() {
+
+	}
+
+	@Override
+	public void onReCalculateRouteForTrafficJam() {
+
+	}
+
+	@Override
+	public void onArrivedWayPoint(int i) {
+
+	}
+
+	@Override
+	public void onGpsOpenStatus(boolean b) {
+
+	}
+
+	@Override
+	public void onNaviInfoUpdated(AMapNaviInfo aMapNaviInfo) {
+
+	}
+
+	@Override
+	public void onNaviInfoUpdate(NaviInfo naviInfo) {
+		System.out.println("onNaviInfoUpdate"+naviInfo);
+	}
+
+	@Override
+	public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo aMapNaviTrafficFacilityInfo) {
+
+	}
+
+	@Override
+	public void OnUpdateTrafficFacility(TrafficFacilityInfo trafficFacilityInfo) {
+
+	}
+
+	@Override
+	public void showCross(AMapNaviCross aMapNaviCross) {
+
+	}
+
+	@Override
+	public void hideCross() {
+
+	}
+
+	@Override
+	public void showLaneInfo(AMapLaneInfo[] aMapLaneInfos, byte[] bytes, byte[] bytes1) {
+
+	}
+
+	@Override
+	public void hideLaneInfo() {
+
+	}
+
+	@Override
+	public void onCalculateMultipleRoutesSuccess(int[] ints) {
+
+	}
+
+	@Override
+	public void notifyParallelRoad(int i) {
+
+	}
+
+	@Override
+	public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo[] aMapNaviTrafficFacilityInfos) {
+
+	}
+
+	@Override
+	public void updateAimlessModeStatistics(AimLessModeStat aimLessModeStat) {
+
+	}
+
+	@Override
+	public void updateAimlessModeCongestionInfo(AimLessModeCongestionInfo aimLessModeCongestionInfo) {
+
 	}
 }

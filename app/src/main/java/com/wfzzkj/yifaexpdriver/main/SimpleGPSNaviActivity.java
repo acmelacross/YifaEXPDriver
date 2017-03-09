@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AMapNaviListener;
 import com.amap.api.navi.AMapNaviViewListener;
+import com.amap.api.navi.enums.NaviType;
 import com.amap.api.navi.model.AMapLaneInfo;
 import com.amap.api.navi.model.AMapNaviCross;
 import com.amap.api.navi.model.AMapNaviInfo;
@@ -100,7 +101,7 @@ public class SimpleGPSNaviActivity extends Activity implements OnClickListener,
 		switch (v.getId()) {
 		case R.id.gps_start_navi_button:
 			AMapNavi.getInstance(this).calculateDriveRoute(mStartPoints,
-					mEndPoints, null, AMapNavi.DrivingDefault);
+					mEndPoints, null, NaviType.EMULATOR);
 			mRouteCalculatorProgressDialog.show();
 			break;
 		case R.id.gps_cancel_navi_button:

@@ -10,6 +10,7 @@ import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
+import com.wfzzkj.yifaexpdriver.CheckPermissionsActivity;
 import com.wfzzkj.yifaexpdriver.R;
 import com.wfzzkj.yifaexpdriver.modle.Constact;
 import com.wfzzkj.yifaexpdriver.modle.GoodsForYifa;
@@ -25,7 +26,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class MapPositionKeRenActivity extends Activity implements AMap.OnInfoWindowClickListener {
+public class MapPositionKeRenActivity extends CheckPermissionsActivity implements AMap.OnInfoWindowClickListener {
 	private AMap aMap;
 	private MapView mapView;
 	private EditText etPayRMB;

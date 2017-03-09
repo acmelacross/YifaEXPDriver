@@ -106,7 +106,7 @@
                 android:layout_width="135dp"
                 android:layout_height="135dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/ic_button_menu_tongzhi" >
+                android:background="@drawable/ic_button_menu_genghuan" >
             </ImageView>
 
             <ImageView
