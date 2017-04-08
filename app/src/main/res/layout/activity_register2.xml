@@ -94,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
              android:layout_below="@id/etRegCheJiaHao"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:gravity="center"
             android:text="默认同意我方协议,点击查看"
             android:textColor="@color/orange_main"
@@ -105,7 +105,9 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
              android:layout_below="@id/tvRegProtocol"
-            android:layout_margin="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
             android:background="@color/orange_main"
             android:gravity="center"
             android:text="提交"
@@ -122,7 +124,31 @@
         custom:progress_text_visibility="visible"
         custom:max="100"
         custom:progress="80"
+           android:layout_below="@id/tvRegConfirm"
         -->
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/rlRegisterGoNo"
+            android:layout_width="match_parent"
+    android:background="@color/gray_line"
+            android:layout_below="@id/tvRegConfirm"
+            android:layout_height="122dp">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="122dp"
+                android:background="@drawable/no_dviver_pic"
+                />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:textSize="10.5pt"
+
+    android:textColor="@color/orange_main"
+    android:text="无车辆信息 请点此进入身份证验证流程"
+    android:layout_marginLeft="110dp"
+    />
+        </RelativeLayout>
 
         <com.wfzzkj.yifaexpdriver.view.NumberProgressBar
             android:id="@+id/numberbar1"

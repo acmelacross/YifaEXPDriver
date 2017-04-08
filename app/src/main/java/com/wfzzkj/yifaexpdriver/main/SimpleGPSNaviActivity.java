@@ -38,7 +38,7 @@ import android.widget.Button;
 import android.widget.TextView;
 /**
  * 
- * 实时导航界面
+ * 实时导航界面  跳转
  * */
 public class SimpleGPSNaviActivity extends Activity implements OnClickListener,
 		AMapNaviListener,AMapNaviViewListener {
@@ -154,15 +154,15 @@ public class SimpleGPSNaviActivity extends Activity implements OnClickListener,
 	@Override
 	public void onCalculateRouteSuccess() {
 		mRouteCalculatorProgressDialog.dismiss();
-		Intent intent = new Intent(SimpleGPSNaviActivity.this,
-				SimpleNaviActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-		Bundle bundle=new Bundle();
-		bundle.putInt(Utils.ACTIVITYINDEX, Utils.SIMPLEGPSNAVI);
-		bundle.putBoolean(Utils.ISEMULATOR, false);
-		intent.putExtras(bundle);
-		startActivity(intent);
-        finish();
+//		Intent intent = new Intent(SimpleGPSNaviActivity.this,
+//				SimpleNaviActivity.class);
+//		intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//		Bundle bundle=new Bundle();
+//		bundle.putInt(Utils.ACTIVITYINDEX, Utils.SIMPLEGPSNAVI);
+//		bundle.putBoolean(Utils.ISEMULATOR, false);
+//		intent.putExtras(bundle);
+//		startActivity(intent);
+//        finish();
 		
 	}
 

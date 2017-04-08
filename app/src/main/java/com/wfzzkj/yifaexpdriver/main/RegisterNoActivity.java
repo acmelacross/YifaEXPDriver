@@ -1,26 +1,22 @@
 package com.wfzzkj.yifaexpdriver.main;
 
-import java.io.File;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.a.a.a.This;
 import com.wfzzkj.yifaexpdriver.CheckPermissionsActivity;
 import com.wfzzkj.yifaexpdriver.Config;
 import com.wfzzkj.yifaexpdriver.R;
@@ -29,160 +25,71 @@ import com.wfzzkj.yifaexpdriver.utils.StringUtil;
 import com.wfzzkj.yifaexpdriver.utils.ToastUtils;
 import com.wfzzkj.yifaexpdriver.view.NumberProgressBar;
 
+import java.io.File;
+
 import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
-
-public class Register2 extends CheckPermissionsActivity implements OnClickListener {
+public class RegisterNoActivity extends CheckPermissionsActivity implements View.OnClickListener {
     DriverForYifa user = new DriverForYifa();
     int counter = 0;
-    NumberProgressBar bnp;// 进度条控件
-    private final String IMAGE_TYPE = "image/*";
+    ImageView imageView_id;
     private final int IMAGE_CODE = 10; // 这里的IMAGE_CODE是自己任意定义的
-    ImageView ivRegImage = null;
+    NumberProgressBar bnp;// 进度条控件
     private String fileNamePic = "";
-   RelativeLayout rlRegisterGoNo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register2);
+        setContentView(R.layout.activity_register_no);
         initView();
-        fileNamePic =Config.getInstance().phone+StringUtil.getCurrentTime()+".jpg";
     }
 
     private void initView() {
-        // TODO Auto-generated method stub
+        ((TextView) findViewById(R.id.title)).setText("身份证验证");
+        ( (ImageView)findViewById(R.id.imgvPoiTitleBack)) .setOnClickListener(this);
+        bnp = (NumberProgressBar) findViewById(R.id.numberbarNo);
+        imageView_id = (ImageView) findViewById(R.id.imageView_id);
+        imageView_id.setOnClickListener(this);
+        fileNamePic = Config.getInstance().phone+ StringUtil.getCurrentTime()+".jpg";
         findViewById(R.id.tvRegConfirm).setOnClickListener(this);
-        ((TextView) findViewById(R.id.title)).setText("司机验证");
-        // startActivity( new Intent().setClass(getApplicationContext(),
-        // IndexActivity.class));
-        // finish();
-        bnp = (NumberProgressBar) findViewById(R.id.numberbar1);
-        ivRegImage = (ImageView) findViewById(R.id.ivRegImage);
-        ivRegImage.setOnClickListener(this);
-        findViewById(R.id.tvRegProtocol).setOnClickListener(this);
-        // Timer timer = new Timer();
-        // timer.schedule(new TimerTask() {
-        // @Override
-        // public void run() {
-        // runOnUiThread(new Runnable() {
-        // @Override
-        // public void run() {
-        // bnp.incrementProgressBy(1);
-        // counter ++;
-        // if (counter == 110) {
-        // bnp.setProgress(0);
-        // counter=0;
-        // }
-        // }
-        // });
-        // }
-        // }, 1000, 100);
-        rlRegisterGoNo = (RelativeLayout) findViewById(R.id.rlRegisterGoNo);
-        rlRegisterGoNo.setOnClickListener(this);
-
     }
 
     @Override
-    public void onClick(View arg0) {
+    public void onClick(View view) {
         // TODO Auto-generated method stub
-        switch (arg0.getId()) {
+        switch (view.getId()) {
+            case R.id.imgvPoiTitleBack:// 身份证验证流程
+                finish();
+                break;
+            case R.id.imageView_id:// 上传图片
+                getImage();
+                break;
             case R.id.tvRegConfirm:// 确认注册
-                EditText etRegCheInfo = (EditText) findViewById(R.id.etRegCheInfo);
-                EditText etRegChePai = (EditText) findViewById(R.id.etRegChePai);
-                EditText etRegCompany = (EditText) findViewById(R.id.etRegCompany);
-                EditText etRegName = (EditText) findViewById(R.id.etRegName);
                 EditText etRegCheJiaHao = (EditText) findViewById(R.id.etRegCheJiaHao);
-                boolean b = StringUtil.checkEditText(etRegCheInfo)
-                        || StringUtil.checkEditText(etRegChePai)
-                        || StringUtil.checkEditText(etRegCompany)
-                        || StringUtil.checkEditText(etRegName)
-                        || StringUtil.checkEditText(etRegCheJiaHao);
-                if (!b) {
+
+                boolean b = StringUtil.checkEditText(etRegCheJiaHao)
+                       ;
+                System.out.println(b+"b" + user.getImageVal() + "---" +user.getImageVal() );
+                if (b&&user.getImageVal()!=null
+                        &&!"".equals(user.getImageVal())) {
+                }else{
                     ToastUtils.showShort(getApplicationContext(), "请将您的信息输入完整");
                     return;
                 }
+
                 user.setPhone(Config.getInstance().phone);
-                user.setCarInfo(etRegCheInfo.getText().toString());
                 user.setCarJia(etRegCheJiaHao.getText().toString());
-                user.setCarNum(etRegChePai.getText().toString());
                 user.setPassword("123456");
                 user.setUsername(Config.getInstance().phone);
-                user.setNickeyName(etRegChePai.getText().toString());
-                user.setCompany(etRegCompany.getText().toString());
                 regDriver();
                 break;
-            case R.id.ivRegImage:// 获取图片上传
-                getImage();
-                break;
-            case R.id.tvRegProtocol:// 点击查看协议
-                startActivity(new Intent().setClass(Register2.this, ProtocolInfoActivity.class));
-                break;
-            case R.id.rlRegisterGoNo:// 身份证验证流程
-                startActivity(new Intent().setClass(Register2.this, RegisterNoActivity.class));
-                break;
-
-
             default:
                 break;
         }
     }
 
-    /**
-     * z注册司机
-     */
-    private void regDriver() {
-        user.signUp(this, new SaveListener() {
-            @Override
-            public void onSuccess() {
-                // ToastUtil.show(getApplicationContext(), "注册成功:");
-                startActivity(new Intent().setClass(getApplicationContext(),
-                        IndexActivity.class));// 直接跳转
-                Log.e("----","注册成功");
-            }
 
-            @Override
-            public void onFailure(int code, String msg) {
-                // ToastUtil.show(getApplicationContext(),
-                // code+"注册失败:原因 "+msg+code);
-                Log.e("----","code" + code + (code == 202) + msg);
-                System.out.println("code" + code + (code == 202) + msg);
-                if (code == 202) {
-                    // 登陆
-                    DriverForYifa bu2 = new DriverForYifa();
-                    bu2.setUsername(Config.getInstance().phone);
-                    bu2.setPassword("123456");
-                    bu2.login(getApplicationContext(), new SaveListener() {
-                        @Override
-                        public void onSuccess() {
-                            // TODO Auto-generated method stub
-                            startActivity(new Intent().setClass(
-                                    getApplicationContext(),
-                                    IndexActivity.class));// 直接跳转
-                            ToastUtils
-                                    .showShort(getApplicationContext(), "验证通过直接登录 ");
-                            finish();
-                        }
-
-                        @Override
-                        public void onFailure(int code, String msg) {
-                            // TODO Auto-generated method stub
-                            System.out.println();
-                            ToastUtils
-                                    .showShort(getApplicationContext(), "登录失败:原因 "
-                                            + msg + code);
-                        }
-                    });
-
-                }
-
-            }
-        });
-
-        uploadImage();
-    }
 
     private void getImage() {
         String status = Environment.getExternalStorageState();
@@ -200,16 +107,17 @@ public class Register2 extends CheckPermissionsActivity implements OnClickListen
                 ContentValues contentValues = new ContentValues(1);
                 contentValues.put(MediaStore.Images.Media.DATA, f.getAbsolutePath());
                 Uri uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues);
+
                 intent.putExtra(MediaStore.Images.Media.ORIENTATION, 0);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                 startActivityForResult(intent, IMAGE_CODE);
             } catch (ActivityNotFoundException e) {
                 // TODO Auto-generated catch block
-                Toast.makeText(Register2.this, "没有找到储存目录", Toast.LENGTH_LONG)
+                Toast.makeText(RegisterNoActivity.this, "没有找到储存目录", Toast.LENGTH_LONG)
                         .show();
             }
         } else {
-            Toast.makeText(Register2.this, "没有储存卡", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegisterNoActivity.this, "没有储存卡", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -221,17 +129,18 @@ public class Register2 extends CheckPermissionsActivity implements OnClickListen
         final String filePath = Environment.getExternalStorageDirectory() + "/"
                 + "yifa" + "/"+fileNamePic;
         if (!new File(filePath).exists()) {
+            System.out.println("aaaaaa  return");
             return;
         }
 
         final BmobFile bmobFile = new BmobFile(new File(filePath));
 
-        bmobFile.uploadblock(Register2.this, new UploadFileListener() {
+        bmobFile.uploadblock(RegisterNoActivity.this, new UploadFileListener() {
             @Override
             public void onSuccess() {
-                user.setImageVal(bmobFile.getFileUrl(Register2.this));
+                user.setImageVal(bmobFile.getFileUrl(RegisterNoActivity.this));
                 System.out.println("bmob" + "文件上传成功：" + bmobFile.getFilename()
-                        + ",可访问的文件地址：" + bmobFile.getFileUrl(Register2.this));
+                        + ",可访问的文件地址：" + bmobFile.getFileUrl(RegisterNoActivity.this));
                 // Log.i("bmob","文件上传成功："+fileName+",可访问的文件地址："+file.getUrl());
                 try {
                     new File(filePath).delete();
@@ -340,7 +249,59 @@ public class Register2 extends CheckPermissionsActivity implements OnClickListen
         if (requestCode == IMAGE_CODE) {
             uploadImage();
         }
+    }
 
+    /**
+     * z注册司机
+     */
+    private void regDriver() {
+        user.signUp(this, new SaveListener() {
+            @Override
+            public void onSuccess() {
+                // ToastUtil.show(getApplicationContext(), "注册成功:");
+                startActivity(new Intent().setClass(getApplicationContext(),
+                        IndexActivity.class));// 直接跳转
+                Log.e("----","注册成功");
+            }
 
+            @Override
+            public void onFailure(int code, String msg) {
+                // ToastUtil.show(getApplicationContext(),
+                // code+"注册失败:原因 "+msg+code);
+                Log.e("----","code" + code + (code == 202) + msg);
+                System.out.println("code" + code + (code == 202) + msg);
+                if (code == 202) {
+                    // 登陆
+                    DriverForYifa bu2 = new DriverForYifa();
+                    bu2.setUsername(Config.getInstance().phone);
+                    bu2.setPassword("123456");
+                    bu2.login(getApplicationContext(), new SaveListener() {
+                        @Override
+                        public void onSuccess() {
+                            // TODO Auto-generated method stub
+                            startActivity(new Intent().setClass(
+                                    getApplicationContext(),
+                                    IndexActivity.class));// 直接跳转
+                            ToastUtils
+                                    .showShort(getApplicationContext(), "验证通过直接登录 ");
+                            finish();
+                        }
+
+                        @Override
+                        public void onFailure(int code, String msg) {
+                            // TODO Auto-generated method stub
+                            System.out.println();
+                            ToastUtils
+                                    .showShort(getApplicationContext(), "登录失败:原因 "
+                                            + msg + code);
+                        }
+                    });
+
+                }
+
+            }
+        });
+
+        uploadImage();
     }
 }

@@ -309,10 +309,11 @@ public void onConnectCompleted() {
 			// TODO Auto-generated method stub
 			switch (msg.what) {
 			case getOrderSuccess:
-				if(rtd.isConnected()){
-				    // 监听表更新
-				    rtd.unsubTableUpdate("GoodsForYifa");
-				}
+				//收到订单 就关闭
+//				if(rtd.isConnected()){
+//				    // 监听表更新
+//				    rtd.unsubTableUpdate("GoodsForYifa");
+//				}
 				TTSController.getInstance(IndexActivity.this).startSpeaking(good.getString());
 
 			//handler.sendEmptyMessageDelayed(GODAOHANG, (good.getString().length()/3+1)*1000);
@@ -333,7 +334,7 @@ public void onConnectCompleted() {
  */
 private void initDaoHang(){
 	//intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-	startActivity(new Intent().addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)   .setClass(getApplicationContext(), SimpleGPSNaviActivity.class));
+	startActivity(new Intent().addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)   .setClass(getApplicationContext(), Navictivity.class));
 }
 	/**
 	 * 初始化AMap对象

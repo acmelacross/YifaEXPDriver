@@ -31,16 +31,16 @@
     <!-- 允许程序设置内置sd卡的写权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-
-
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".CrashApplication"
         android:allowBackup="true"
@@ -71,12 +71,13 @@
         <activity android:name=".menu.MyOrderActivity" />
         <activity android:name=".menu.MapPositionKeRenActivity" />
         <activity android:name=".menu.ChangerDriverActivity" />
+        <activity android:name="io.github.xudaojie.qrcodelib.CaptureActivity" />
 
 
+        　
 
+        <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name="io.github.xudaojie.qrcodelib.CaptureActivity"/>
-        　<service android:name="com.amap.api.location.APSService"></service>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="xUNTGMCmqEGbh5bA7bXS8eNaESXOkWBX" />
@@ -91,11 +92,15 @@
         <meta-data
             android:name="IFLYTEK_CHANNEL"
             android:value="Android_Demo" />
+        <meta-data
+            android:name="TD_APP_ID"
+            android:value="F226460213A94A5EA094A68C826DC4D8" />
+        <meta-data
+            android:name="TD_CHANNEL_ID"
+            android:value="first_sanliuling" />
 
-
-        <meta-data android:name="TD_APP_ID" android:value="F226460213A94A5EA094A68C826DC4D8" />
-        <meta-data android:name="TD_CHANNEL_ID" android:value="first_sanliuling" />
-
+        <activity android:name=".main.Navictivity" />
+        <activity android:name=".main.RegisterNoActivity"></activity>
     </application>
 
 </manifest>

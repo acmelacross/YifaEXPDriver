@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical"
+    >
+    <include
+        android:id="@+id/menu"
+        layout="@layout/view_title" />
+    <com.wfzzkj.yifaexpdriver.view.NumberProgressBar
+        android:id="@+id/numberbarNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+     android:layout_gravity="left"
+     />
+
+    <ImageView
+        android:id="@+id/imageView_id"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/id_pic_example" />
+    <EditText
+        android:id="@+id/etRegCheJiaHao"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/input_text_orange_border"
+        android:hint="请输入一个紧急联系人电话(必填)"
+        android:padding="8dp" />
+
+
+    <TextView
+        android:id="@+id/tvRegConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/orange_main"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+</LinearLayout>
