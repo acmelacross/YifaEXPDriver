@@ -22,7 +22,7 @@
             android:layout_below="@+id/menu"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
-            android:background="@drawable/reg_ic_license" />
+            android:background="@drawable/reg_ic_license2" />
 
         <EditText
             android:id="@+id/etRegName"
@@ -34,7 +34,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/input_text_orange_border"
-            android:hint="姓名"
+            android:hint="姓名(选填)"
             android:padding="8dp" />
 
         <EditText
@@ -47,7 +47,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/input_text_orange_border"
-            android:hint="出租车公司"
+            android:hint="电话(选填)"
             android:padding="8dp" />
 
         <EditText
@@ -60,7 +60,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/input_text_orange_border"
-            android:hint="车牌号"
+            android:hint="车牌号(选填)"
             android:padding="8dp" />
 
         <EditText
@@ -73,7 +73,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/input_text_orange_border"
-            android:hint="车辆基本信息"
+            android:hint="车辆基本信息(选填)"
             android:padding="8dp" />
 
         <EditText
@@ -86,7 +86,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/input_text_orange_border"
-            android:hint="车架号"
+            android:hint="车架号(选填)"
             android:padding="8dp" />
         
          <TextView

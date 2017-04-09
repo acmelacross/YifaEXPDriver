@@ -95,23 +95,32 @@ public class Register2 extends CheckPermissionsActivity implements OnClickListen
                 EditText etRegCompany = (EditText) findViewById(R.id.etRegCompany);
                 EditText etRegName = (EditText) findViewById(R.id.etRegName);
                 EditText etRegCheJiaHao = (EditText) findViewById(R.id.etRegCheJiaHao);
-                boolean b = StringUtil.checkEditText(etRegCheInfo)
-                        || StringUtil.checkEditText(etRegChePai)
-                        || StringUtil.checkEditText(etRegCompany)
-                        || StringUtil.checkEditText(etRegName)
-                        || StringUtil.checkEditText(etRegCheJiaHao);
-                if (!b) {
-                    ToastUtils.showShort(getApplicationContext(), "请将您的信息输入完整");
-                    return;
-                }
+//                boolean b = StringUtil.checkEditText(etRegCheInfo)
+//                        || StringUtil.checkEditText(etRegChePai)
+//                        || StringUtil.checkEditText(etRegCompany)
+//                        || StringUtil.checkEditText(etRegName)
+//                        || StringUtil.checkEditText(etRegCheJiaHao);
+//                if (!b) {
+//                    ToastUtils.showShort(getApplicationContext(), "请将您的信息输入完整");
+//                    return;
+//                }
                 user.setPhone(Config.getInstance().phone);
-                user.setCarInfo(etRegCheInfo.getText().toString());
-                user.setCarJia(etRegCheJiaHao.getText().toString());
-                user.setCarNum(etRegChePai.getText().toString());
+                try{
+                    user.setCarInfo(etRegCheInfo.getText().toString());
+                    user.setCarJia(etRegCheJiaHao.getText().toString());
+                    user.setCarNum(etRegChePai.getText().toString());
+                    user.setCompany(etRegCompany.getText().toString());
+                    user.setNickeyName(etRegChePai.getText().toString());
+                }
+                catch(Exception e){
+
+                }
+
+
                 user.setPassword("123456");
                 user.setUsername(Config.getInstance().phone);
-                user.setNickeyName(etRegChePai.getText().toString());
-                user.setCompany(etRegCompany.getText().toString());
+
+
                 regDriver();
                 break;
             case R.id.ivRegImage:// 获取图片上传
@@ -140,6 +149,7 @@ public class Register2 extends CheckPermissionsActivity implements OnClickListen
                 // ToastUtil.show(getApplicationContext(), "注册成功:");
                 startActivity(new Intent().setClass(getApplicationContext(),
                         IndexActivity.class));// 直接跳转
+                finish();
                 Log.e("----","注册成功");
             }
 
