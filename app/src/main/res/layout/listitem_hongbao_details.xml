@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="59dp"
+      android:minHeight="59dp"
+      android:background="@color/white"
+      android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+     >
+     <TextView 
+         android:id="@+id/tv_hongbao_detail_name"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="企业红包收入"
+           android:layout_marginLeft="20dp"
+           android:textColor="@color/black"
+           android:textSize="15sp"
+         />
+     
+        <TextView 
+             android:id="@+id/tv_hongbao_detail_state"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="交易成功"
+          android:layout_alignParentBottom="true"
+         android:layout_marginLeft="20dp"
+         />
+         <TextView 
+               android:id="@+id/tv_hongbao_detail_coust"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentRight="true"
+         android:layout_marginRight="20dp"
+         android:text="0.10元"
+          android:textColor="@color/black"
+           android:textSize="15sp"
+         android:layout_marginLeft="20dp"
+         />
+     
+        <TextView 
+                android:id="@+id/tv_hongbao_detail_time"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+           android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+         android:text="2017-05-06 12:01:01"
+         />
+   
+   
+</RelativeLayout>
+
+
+

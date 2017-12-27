@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/llFragmentFour"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical"
+    >
+
+
+    <include
+        android:id="@+id/menu"
+        layout="@layout/view_title"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="@color/white"
+        android:layout_marginTop="13dp"
+        android:id="@+id/rlSetWodeDongTai"
+        android:clickable="false"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/ic_width"
+            android:layout_height="@dimen/ic_height"
+            android:background="@drawable/icon_ichuxing_set_wodedongtai"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送通知"
+            android:layout_marginLeft="60dp"
+            android:textColor="@color/black"
+            android:layout_centerVertical="true"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line"
+            android:layout_alignParentBottom="true"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line"
+            android:layout_alignParentTop="true"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="@color/white"
+        android:id="@+id/rlSetWodeTongZhi"
+        >
+        <ImageView
+            android:layout_width="@dimen/ic_width"
+            android:layout_height="@dimen/ic_height"
+            android:background="@drawable/icon_ichuxing_set_wodetongzhi"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的通知"
+            android:layout_marginLeft="60dp"
+            android:textColor="@color/black"
+            android:layout_centerVertical="true"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line"
+            android:layout_alignParentBottom="true"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="@color/white"
+        android:id="@+id/rlSetHelp"
+        android:layout_marginTop="14dp"
+        >
+        <ImageView
+            android:layout_width="@dimen/ic_width"
+            android:layout_height="@dimen/ic_height"
+            android:background="@drawable/icon_ichuxing_set_bangzhu"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="帮助"
+            android:layout_marginLeft="60dp"
+            android:textColor="@color/black"
+            android:layout_centerVertical="true"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line"
+            android:layout_alignParentBottom="true"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line"
+            android:layout_alignParentTop="true"
+            />
+    </RelativeLayout>
+
+
+
+
+
+</LinearLayout>

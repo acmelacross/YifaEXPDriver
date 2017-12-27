@@ -76,6 +76,7 @@
 
         　
 
+
         <service android:name="com.amap.api.location.APSService" />
 
         <meta-data
@@ -100,7 +101,9 @@
             android:value="first_sanliuling" />
 
         <activity android:name=".main.Navictivity" />
-        <activity android:name=".main.RegisterNoActivity"></activity>
+        <activity android:name=".main.RegisterNoActivity" />
+        <activity android:name=".menu.set.SetOtherActivity" />
+        <activity android:name=".menu.set.DriversActivity"></activity>
     </application>
 
 </manifest>

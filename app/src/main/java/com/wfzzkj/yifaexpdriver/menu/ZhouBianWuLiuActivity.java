@@ -59,13 +59,13 @@ public class ZhouBianWuLiuActivity extends Activity {
     private void printPointWithMap(){
     	//MyMapUtil.drawMarkerAndWinWithLon(aMap, 30.679879, 104.064855, "主人,我到这里啦", "外星地点", false).showInfoWindow();
     	Marker marker =  aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f)
-				.position(new LatLng(30.679879, 104.064855)).title("成都市")
-				.snippet("成都市:30.679879, 104.064855").draggable(true).icon(BitmapDescriptorFactory
+				.position(new LatLng(36.683584, 119.14407)).title("潍坊市")//119.14407,36.683584
+				.snippet("潍坊市奎文区金銮御景城").draggable(true).icon(BitmapDescriptorFactory
 						.fromResource(R.drawable.map_huo_where)));
     	marker.showInfoWindow();
          MyMapUtil.changeCamera(aMap,
 					CameraUpdateFactory.newCameraPosition(new CameraPosition(
-							new LatLng(30.679879, 104.064855), 18, 0, 30)));
+							new LatLng(36.683584, 119.14407), 18, 0, 30)));
     }
 
 }

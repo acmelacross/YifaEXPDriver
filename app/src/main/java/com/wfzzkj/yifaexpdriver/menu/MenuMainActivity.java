@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.widget.TextView;
 
 import com.wfzzkj.yifaexpdriver.R;
+import com.wfzzkj.yifaexpdriver.menu.set.SetOtherActivity;
 import com.wfzzkj.yifaexpdriver.modle.GoodsForYifa;
 import com.wfzzkj.yifaexpdriver.modle.UserForYifa;
 import com.wfzzkj.yifaexpdriver.utils.FailedlWrite;
@@ -69,7 +70,7 @@ public class MenuMainActivity extends Activity implements OnClickListener {
                startActivityForResult(i, REQUEST_CODE);
 		break;
 	case R.id.ivMenuQita:
-		ToastUtils.showShort(getApplicationContext(), "该功能暂未开放");
+		startActivity(new Intent().setClass(getApplicationContext(), SetOtherActivity.class));
 		break;
 		default:
 			break;
