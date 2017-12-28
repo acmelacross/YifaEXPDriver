@@ -1,5 +1,6 @@
 package com.wfzzkj.yifaexpdriver.main;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,6 +26,8 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobRealTimeData;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobGeoPoint;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.GetListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.ValueEventListener;
@@ -46,7 +49,9 @@ import com.wfzzkj.yifaexpdriver.CheckPermissionsActivity;
 import com.wfzzkj.yifaexpdriver.Config;
 import com.wfzzkj.yifaexpdriver.R;
 import com.wfzzkj.yifaexpdriver.menu.MenuMainActivity;
+import com.wfzzkj.yifaexpdriver.modle.DriverForYifa;
 import com.wfzzkj.yifaexpdriver.modle.GoodsForYifa;
+import com.wfzzkj.yifaexpdriver.modle.NoticeMsg;
 import com.wfzzkj.yifaexpdriver.modle.UserForYifa;
 import com.wfzzkj.yifaexpdriver.utils.FailedlWrite;
 import com.wfzzkj.yifaexpdriver.utils.ToastUtils;
@@ -86,8 +91,9 @@ public class IndexActivity extends CheckPermissionsActivity implements LocationS
 		initView();
 		// 监听表更新
 		getNewValue();
-
+initNotice();
 	}
+
 
 	private void initView() {
 		//语音播报开始
@@ -542,5 +548,31 @@ private void initDaoHang(){
 			mlocationClient.onDestroy();
 		}
 		mlocationClient = null;
+	}
+
+	/*
+		初始化通知
+	* */
+	private void initNotice() {
+		BmobQuery<NoticeMsg> query = new BmobQuery<NoticeMsg>();
+		query.setLimit(1);
+		query.addWhereEqualTo("driverTo", BmobUser.getCurrentUser(getApplicationContext(),DriverForYifa.class).getObjectId());
+		query.order("-createdAt");
+
+		query.findObjects(getApplicationContext(), new FindListener<NoticeMsg>() {
+			@Override
+			public void onSuccess(List<NoticeMsg> object) {
+				// TODO Auto-generated method stub
+				TTSController.getInstance(IndexActivity.this).startSpeaking(" 收到一条通知,"+object.get(0).getContent());
+				//System.out.println("bbbbbbbbbbbbbbbbb"+);
+			}
+
+			@Override
+			public void onError(int code, String msg) {
+				// TODO Auto-generated method stub
+				FailedlWrite.writeCrashInfoToFile("BMOB订单查询失败  "+code+msg);
+				//System.out.println("bbbbbbbbbbbbbbbbb");
+			}
+		});
 	}
 }

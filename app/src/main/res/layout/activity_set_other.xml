@@ -56,6 +56,7 @@
         android:layout_height="43dp"
         android:background="@color/white"
         android:id="@+id/rlSetWodeTongZhi"
+        android:visibility="gone"
         >
         <ImageView
             android:layout_width="@dimen/ic_width"
@@ -101,7 +102,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="帮助"
+            android:text="产品介绍"
             android:layout_marginLeft="60dp"
             android:textColor="@color/black"
             android:layout_centerVertical="true"

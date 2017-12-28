@@ -22,4 +22,7 @@ public class Constact {
 	public static final int EXP_GoodPayStateInt = 1;//货到付款  
 	public static final int EXP_GoodPayStateDestination= 2;//在线支付  
 //	public static final String EXP_WAY_BY_XIAODAN = "小单";
+	public static final int NOTICE_TYPE_ADMIN= 100;
+	public static final int NOTICE_TYPE_DRIVER_TO_DRIVER= 0;
+	public static final int NOTICE_TYPE_OTHER= 1;
 }

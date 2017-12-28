@@ -8,12 +8,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wfzzkj.yifaexpdriver.R;
+import com.wfzzkj.yifaexpdriver.menu.MyFeedBackActivity;
 import com.wfzzkj.yifaexpdriver.modle.DriverForYifa;
 import com.wfzzkj.yifaexpdriver.modle.GoodsForYifa;
 import com.wfzzkj.yifaexpdriver.utils.FailedlWrite;
@@ -53,6 +55,14 @@ public class DriversActivity extends Activity {
         lv_hongbao_detail_list = (ListView)findViewById(R.id.lv_hongbao_detail_list);
         adapter = new MyAdapter();
         lv_hongbao_detail_list.setAdapter(adapter);
+        lv_hongbao_detail_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                MyFeedBackActivity.driver = arrayList.get(i);
+                startActivity(new Intent().setClass(getApplicationContext(),MyFeedBackActivity.class).putExtra("flag",true));
+            }
+        });
+
 
     }
     private void initData(){

@@ -2,6 +2,7 @@ package com.wfzzkj.yifaexpdriver.menu.set;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -46,9 +47,23 @@ public class SetOtherActivity extends Activity {
         rlSetWodeTongZhi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent().setClass(SetOtherActivity.this,DriversActivity.class));
+               // startActivity(new Intent().setClass(SetOtherActivity.this,DriversActivity.class));
             }
         });
+
+        rlSetHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+//Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                intent.setAction("android.intent.action.VIEW");
+                Uri content_url = Uri.parse("http://568f82a1.u.h5mgd.com/campaigns/58e59e6c24b98705a1082fb0/20170928092042/59ccf59692b5793f6924bf17/index.html?t=400633373&custom=&crid=&s=1&from=singlemessage");
+                intent.setData(content_url);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
 }

@@ -10,11 +10,11 @@ import cn.bmob.v3.BmobObject;
  */
 
 public class NoticeMsg extends BmobObject {
-    GoodsForYifa good;
-    DriverForYifa driverFrom;//发送消息的司机
-    DriverForYifa driverMy;//接受消息的司机 本人
-    Integer noticeType;//0 来自普通的司机通知     1其他       100最高级别管理员消息 所有人必须接收
-    String content;//通知大体内容
+    private GoodsForYifa good;
+    private DriverForYifa driverTo;//发送消息给谁接收
+    private DriverForYifa driverFrom;//接受消息的来源  通知发送者
+    private Integer noticeType;//0 来自普通的司机通知     1其他       100最高级别管理员消息 所有人必须接收
+   private String content;//通知大体内容
 
     public GoodsForYifa getGood() {
         return good;
@@ -24,20 +24,20 @@ public class NoticeMsg extends BmobObject {
         this.good = good;
     }
 
+    public DriverForYifa getDriverTo() {
+        return driverTo;
+    }
+
+    public void setDriverTo(DriverForYifa driverTo) {
+        this.driverTo = driverTo;
+    }
+
     public DriverForYifa getDriverFrom() {
         return driverFrom;
     }
 
     public void setDriverFrom(DriverForYifa driverFrom) {
         this.driverFrom = driverFrom;
-    }
-
-    public DriverForYifa getDriverMy() {
-        return driverMy;
-    }
-
-    public void setDriverMy(DriverForYifa driverMy) {
-        this.driverMy = driverMy;
     }
 
     public Integer getNoticeType() {
