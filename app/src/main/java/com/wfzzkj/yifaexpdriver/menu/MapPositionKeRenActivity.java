@@ -12,10 +12,12 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.wfzzkj.yifaexpdriver.CheckPermissionsActivity;
 import com.wfzzkj.yifaexpdriver.R;
+import com.wfzzkj.yifaexpdriver.main.IndexActivity;
 import com.wfzzkj.yifaexpdriver.modle.Constact;
 import com.wfzzkj.yifaexpdriver.modle.GoodsForYifa;
 import com.wfzzkj.yifaexpdriver.utils.MyMapUtil;
 import com.wfzzkj.yifaexpdriver.utils.ToastUtils;
+import com.wfzzkj.yifaexpdriver.utils.xunfei.TTSController;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -85,6 +87,7 @@ public class MapPositionKeRenActivity extends CheckPermissionsActivity implement
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+				TTSController.getInstance(MapPositionKeRenActivity.this).startSpeaking(" 已确认收货");
 				
 			}
 		});

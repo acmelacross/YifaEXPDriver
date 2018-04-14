@@ -25,8 +25,8 @@ public class GoodsForYifa extends BmobObject{
 	private  String  sExpHuoInfoType = "";//重货 泡货
 	private  String  sExpOrderTime = "";//预约时间
 	private  String   sExpUserTime="";//客户发货时间
-	private  String   sExpDriverTime="";//司机接货时间
-	private  String   sExpArriverTime="";//签收时间
+//	private  String   sExpDriverTime="";//司机接货时间
+//	private  String   sExpArriverTime="";//签收时间
 	private BmobGeoPoint gpsAddStart;//地理位置
 	private BmobGeoPoint gpsAddFinish;//地理位置
 	private  String gpsAddStartStr;//地理位置
@@ -39,9 +39,9 @@ public class GoodsForYifa extends BmobObject{
 	public int getExpHuoPay() {
 		return ExpHuoPay;
 	}
-	public void setExpHuoPay(int expHuoPay) {
-		ExpHuoPay = expHuoPay;
-	}
+//	public void setExpHuoPay(int expHuoPay) {
+//		ExpHuoPay = expHuoPay;
+//	}
 	public double getPrice() {
 		return price;
 	}
@@ -93,18 +93,18 @@ public class GoodsForYifa extends BmobObject{
 				"yyyy年MMMMdd日hh:mm aa");
 		this.sExpUserTime =  mFormatter.format(new Date());
 	}
-	public String getsExpDriverTime() {
-		return sExpDriverTime;
-	}
-	public void setsExpDriverTime(String sExpDriverTime) {
-		this.sExpDriverTime = sExpDriverTime;
-	}
-	public String getsExpArriverTime() {
-		return sExpArriverTime;
-	}
-	public void setsExpArriverTime(String sExpArriverTime) {
-		this.sExpArriverTime = sExpArriverTime;
-	}
+//	public String getsExpDriverTime() {
+//		return sExpDriverTime;
+//	}
+//	public void setsExpDriverTime(String sExpDriverTime) {
+//		this.sExpDriverTime = sExpDriverTime;
+//	}
+//	public String getsExpArriverTime() {
+//		return sExpArriverTime;
+//	}
+//	public void setsExpArriverTime(String sExpArriverTime) {
+//		this.sExpArriverTime = sExpArriverTime;
+//	}
 	
 	
 	public UserForYifa getUser() {
